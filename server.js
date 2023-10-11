@@ -18,6 +18,10 @@ app.use(cors({
 
 app.use(express.json())
 
+if(process.env.NODE_ENV == 'production'){
+    app.use(express.static('client/bound'))
+}
+
 app.use((request, response, next) => {
     console.log(request.path, request.method)
     next()
