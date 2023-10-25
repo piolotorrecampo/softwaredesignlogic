@@ -31,11 +31,11 @@ const LogoBanner = () => {
   )
 }
 
-function Navbar() {
+function Header(props) {
   return (
     <div>
       <TopBanner
-        leftContent="Call us: +63 123 123 1234"
+        leftContent={props.leftContent}
         centerContent="Open from Monday to Friday - 7 AM to 10 PM"
         rightContent="Email us: example@gmail.com"
       />
@@ -45,4 +45,4 @@ function Navbar() {
   )
 }
 
-export default Navbar
+export default Header

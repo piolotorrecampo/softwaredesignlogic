@@ -1,8 +1,11 @@
 import React from 'react'
-import Navbar from '../components/Navbar'
+import Header from '../components/Header'
 import Button from '../components/Button'
-import GoogleMaps from '../components/GoogleMaps'
-import Carousel from '../components/Carousel'
+import Map from '../components/Map'
+import OcassionCard from '../components/OcassionCard'
+import FlowerCard from '../components/FlowerCard'
+import flowerImage from '../assets/images/flower.png'
+import ocassionImage from '../assets/images/ocassion_one.png'
 
 const Hero = () => {
   return(
@@ -25,51 +28,65 @@ const Hero = () => {
 }
 
 const Collections = (props) => {
+
+  const ocassions = [
+    {title: "Love & Romance", image: ""},
+    {title: "Boquets", image: ""},
+    {title: "Inagurals", image: ""},
+    {title: "Condolences", image: ""},
+    {title: "Vase", image: ""},
+  ]
+
+  const mapped = ocassions.map((ocassion) => (
+    <OcassionCard
+      title={ocassion.title}
+      image={ocassionImage}
+    />
+  ))
+
   return(
     <div className='flex flex-col justify-center py-20 items-center'>
       <div className='text-6xl pb-16'>
-          <h1 className='text-black'>COLLECTIONS</h1>
+          <h1 className='text-black'>Collections</h1>
       </div>
-      <div className='flex flex-row mx-40 snap-x'> 
-        <Carousel/>
+      <div className='flex flex-row justify-center items-center flex-wrap mx-4'> 
+        {mapped}
       </div>
     </div>  
-  )
-}
+)}
 
-const Map = () => {
+const Featured = () => {
   return(
-    <div className='flex flex-row py-20 gap-10 w-full justify-center items-center'>
-      <div className='p-5'>
-        <GoogleMaps/>
+    <div className='flex flex-col justify-center py-20 items-center'>
+      <div className='text-6xl pb-16'>
+        <h1 className='text-black'>Our Flowers</h1>
       </div>
-      <div className='flex flex-col gap-8 w-1/2 text-white'>
-        <div className='flex flex-col gap-4'>
-          <h2 className='text-6xl'>Where are we located?</h2>
-          <p className='text-2xl'>Stall#3 J. Chanyungco St., Marikina City, 1800 Metro Manila, Marikina City, Philippines</p>
-        </div>
-        <div className='flex flex-col gap-4'>
-          <Button
-            title='Contact Us'
-          />
-        </div>
+      <div>
+      <FlowerCard
+        image={flowerImage}
+        title="asd"
+        price="1900"
+        oldPrice="2000"
+      />
       </div>
-    </div>  
-  ) 
-}
+  </div>
+)}
 
 const LandingPage = () => {
   return (
     <div>
       <div className='bg-hero-img w-full h-auto'>
-        <Navbar/>
+        <Header/>
         <Hero/>
       </div>
       <div>
-        <Collections/>
+        <Featured/>
       </div>
       <div className='bg-location-img'>
         <Map/>
+      </div>
+      <div>
+        <Collections/>
       </div>
     </div>
   )

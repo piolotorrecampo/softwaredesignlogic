@@ -40,18 +40,23 @@ const Carousel = () => {
     <div className="flex items-center flex-col justify-center h-screen">
           {images.map((image, index) => (
             <Link to='/flowers'>
-              <motion.img
-                key={index}
-                src={image}
-                alt={image}
-                className="rounded-[12px]"
-                initial="center"
-                animate={positions[positionIndexes[index]]}
-                variants={imageVariants}
-                transition={{ duration: 0.5 }}
-                style={{ width: "40%", position: "absolute" }}
-              />
-              <h1 className="text-black">Love  and Romance</h1>
+              <div>
+                <motion.img
+                  key={index}
+                  src={image}
+                  alt={image}
+                  className="rounded-[12px]"
+                  initial="center"
+                  animate={positions[positionIndexes[index]]}
+                  variants={imageVariants}
+                  transition={{ duration: 0.5 }}
+                  style={{ width: "40%", position: "absolute" }}
+                />
+              </div>
+              <div>
+                <h1 className="text-black">Love and Romance</h1>
+              </div>
+              
             </Link>
         ))}
 
