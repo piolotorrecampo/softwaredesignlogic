@@ -12,11 +12,14 @@ module.exports = {
         secondary: '#000000',
         topbanner: '#FFCAD4',
         background: '#5F4E41',
+        footer: '#7A5C58',
       },
       backgroundImage: {
         'hero-img': "url('./assets/images/herobg.png')",
         'location-img': "url('./assets/images/locationbg.png')",
-      }
+        'more-img': "url('./assets/images/more-bg.png')",
+        'banner-img': "url('./assets/images/subbanner.png')"
+      },
     },
     screens: {
       'sm': '640px',

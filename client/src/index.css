@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Rufina:wght@400;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
 
-h1, h2 {
+h1, h2, h3, h4, h5, h6 {
   font-family: 'Rufina', serif;
 }
 

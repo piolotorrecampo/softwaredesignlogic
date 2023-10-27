@@ -1,10 +1,15 @@
 import React from 'react'
+import { motion } from 'framer-motion'
 
-function Button(props) {
+const Button = (props) => {
   return (
-    <button className='bg-background text-foreground px-5 py-2'>
+    <motion.button 
+      className='bg-background text-foreground px-5 py-2'
+      whileHover={{scale: 1.1,}}
+      whileTap={{scale: 0.9,}}
+    >
       {props.title}
-    </button>
+    </motion.button>
   )
 }
 

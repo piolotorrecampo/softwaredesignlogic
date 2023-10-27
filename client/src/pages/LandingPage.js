@@ -1,11 +1,18 @@
 import React from 'react'
-import Header from '../components/Header'
+import TopBanner from '../components/TopBanner'
+import LogoBanner from '../components/LogoBanner'
 import Button from '../components/Button'
 import Map from '../components/Map'
 import OcassionCard from '../components/OcassionCard'
 import FlowerCard from '../components/FlowerCard'
 import flowerImage from '../assets/images/flower.png'
 import ocassionImage from '../assets/images/ocassion_one.png'
+import Navbar from '../components/Navbar'
+import { useState } from 'react'
+import BlogPostsCard from '../components/BlogPostsCard'
+import blogPostImage from '../assets/images/blogpost_one.png'
+import Footer from '../components/Footer'
+
 
 const Hero = () => {
   return(
@@ -45,49 +52,136 @@ const Collections = (props) => {
   ))
 
   return(
-    <div className='flex flex-col justify-center py-20 items-center'>
+    <div className='flex flex-col justify-center py-16 items-center'>
       <div className='text-6xl pb-16'>
-          <h1 className='text-black'>Collections</h1>
+          <h1 className='text-black'>Ocassions</h1>
       </div>
-      <div className='flex flex-row justify-center items-center flex-wrap mx-4'> 
+      <div className='mx-40 basis-2/6 flex flex-wrap justify-center gap-3 items-center'> 
         {mapped}
       </div>
     </div>  
 )}
 
-const Featured = () => {
+const OurFlowers = () => {
+  const [isClicked, setIsClicked] = useState(false)
+
   return(
     <div className='flex flex-col justify-center py-20 items-center'>
-      <div className='text-6xl pb-16'>
+      <div className='text-6xl'>
         <h1 className='text-black'>Our Flowers</h1>
       </div>
+      <div className='py-8 justify-center items-center flex flex-row gap-3'>
+        <button onClick={() => {setIsClicked(false)}}>Featured</button>
+        <p className='text-black'>|</p>
+        <button onClick={() => {setIsClicked(true)}}>Recent</button>
+      </div>
+      {
+        isClicked ? 
+          <div>
+            <FlowerCard
+              image={flowerImage}
+              title="Roses are Red"
+              price="1900"
+            />
+          </div>
+        : 
+        <div>
+          <FlowerCard
+            image={flowerImage}
+            title="Blue are blue"
+            price="1900"
+          />
+          <FlowerCard
+            image={flowerImage}
+            title="Blue are blue"
+            price="1900"
+          />
+        </div>
+      }
       <div>
-      <FlowerCard
-        image={flowerImage}
-        title="asd"
-        price="1900"
-        oldPrice="2000"
-      />
       </div>
   </div>
 )}
 
+const More = () => {
+  return(
+    <div className='mx-40 p-16 flex gap-8 flex-col justify-content items-center'>
+      <h3 className='text-xl text-center text-white'>
+        "Brighten your world with the elegance of our flower arrangements; each bloom tells a story of beauty and emotion. Let our creations bring a touch of nature's wonder into your life."
+      </h3>
+      <Button
+        title="More Flowers"
+      />
+    </div>
+  )
+}
+
+const RecentBlogs = (props) => {
+  return(
+    <div className='flex flex-col justify-center py-20 items-center'>
+      <div className='text-6xl pb-16'>
+        <h1 className='text-black'>Recent Activities</h1>
+      </div>
+      <div>
+        <BlogPostsCard
+          image={blogPostImage}
+          title="Hello Marikina 2022"
+          date="September 20, 2023"
+          description="Dolore labore laborum consequat incididunt deserunt. Amet pariatur excepteur veniam nulla."
+        />
+      </div>
+    </div>
+  )
+}
+
+
+
 const LandingPage = () => {
   return (
     <div>
-      <div className='bg-hero-img w-full h-auto'>
-        <Header/>
-        <Hero/>
+
+      <div className='sticky top-0'>
+        <TopBanner
+          leftContent="+63 123 123 1234"
+          centerContent="Open at 7 am to 10 pm"
+          rightContent="example@gmail.com"
+        />
       </div>
       <div>
-        <Featured/>
+        <LogoBanner/>
       </div>
-      <div className='bg-location-img'>
-        <Map/>
+      <div className='sticky top-8'>
+        <Navbar/>
       </div>
+
+      <div className='bg-center bg-cover bg-no-repeat bg-hero-img'> 
+        <Hero/>
+      </div>
+
       <div>
         <Collections/>
       </div>
+
+      <div className='bg-location-img bg-cover bg-no-repeat bg-center'>
+        <Map/>
+      </div>
+
+      <div>
+        <OurFlowers/>
+      </div>
+
+      <div className='bg-more-img bg-cover bg-no-repeat bg-center'>
+        <More/>
+      </div>
+
+      <div>
+        <RecentBlogs/>
+      </div>
+
+      <div>
+        <Footer/>
+      </div>
+
     </div>
   )
 }
